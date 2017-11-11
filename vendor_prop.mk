@@ -222,6 +222,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.product.hardware.sku=ese \
     persist.vendor.nfc.delayese=true
 
+# OTG support
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.oem.otg_support=true
+
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.fw.bg_apps_limit=60 \
