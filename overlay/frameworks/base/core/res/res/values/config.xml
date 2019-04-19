@@ -690,4 +690,7 @@
 
     <!-- Set AOD off by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- Statusbar Burn in protection -->
+    <bool name="config_statusBarBurnInProtection">true</bool>
 </resources>
