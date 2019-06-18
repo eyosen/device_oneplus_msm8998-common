@@ -22,6 +22,7 @@ allow system_server sysfs_batteryinfo:file { r_file_perms };
 allow system_server sysfs_fpc:dir { r_dir_perms };
 allow system_server sysfs_fpc:file { rw_file_perms };
 allow system_server vendor_keylayout_file:file { r_file_perms };
+allow system_server sysfs_inpocket:file { rw_file_perms };
 
 # Thermal
 allow system_server thermal_service:service_manager { find };

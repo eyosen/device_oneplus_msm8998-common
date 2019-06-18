@@ -89,6 +89,7 @@
 
 /firmware(/.*)?                                                 u:object_r:firmware_file:s0
 /bt_firmware(/.*)?                                              u:object_r:bt_firmware_file:s0
+/sys/kernel/pocket_judge/inpocket                               u:object_r:sysfs_inpocket:s0
 
 # Thermal
 /data/vendor/thermal(/.*)?                                      u:object_r:thermal_data_file:s0
