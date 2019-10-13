@@ -723,4 +723,7 @@
 
    <!-- Whether to enable oneplus cam hack -->
    <bool name="config_enableOPcamhack">true</bool>
+
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <bool name="config_ignoreRssnrSignalLevel">true</bool>
 </resources>
