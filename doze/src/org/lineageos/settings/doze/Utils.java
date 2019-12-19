@@ -31,9 +31,9 @@ import static android.provider.Settings.Secure.DOZE_ENABLED;
 public final class Utils {
 
     protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
-    protected static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
-    protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
-    protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
+    protected static final String GESTURE_PICK_UP_KEY = "doze_tilt_gesture";
+    protected static final String GESTURE_HAND_WAVE_KEY = "doze_handwave_gesture";
+    protected static final String GESTURE_POCKET_KEY = "doze_pocket_gesture";
     private static final String TAG = "DozeUtils";
     private static final boolean DEBUG = false;
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
@@ -86,8 +86,8 @@ public final class Utils {
     }
 
     protected static boolean isGestureEnabled(Context context, String gesture) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean(gesture, false);
+        return Settings.Secure.getInt(context.getContentResolver(),
+                gesture, 0) != 0;
     }
 
     protected static boolean isPickUpEnabled(Context context) {
