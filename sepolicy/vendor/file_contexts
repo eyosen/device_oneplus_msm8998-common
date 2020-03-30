@@ -93,16 +93,15 @@
 
 /sys/kernel/fast_charge/force_fast_charge                       u:object_r:sysfs_fastcharge:s0
 
-/sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
-/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_clock                                       u:object_r:sysfs_device_info:s0
-/sys/kernel/gpu/gpu_busy                                        u:object_r:sysfs_device_info:s0
-
 # Thermal
 /data/vendor/thermal(/.*)?                                      u:object_r:thermal_data_file:s0
 
 # Touch
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_oneplus_msm8998_exec:s0
+
+# QuickSettings SystemInfo
+/sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
+/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
 
 # Wifi
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi_mac_generator_exec:s0
