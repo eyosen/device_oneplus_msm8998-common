@@ -89,18 +89,36 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mPocketPreference.setOnPreferenceChangeListener(this);
 
         mEdgeLightColorModePref = (ListPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR_MODE);
+        mEdgeLightColorModePref.setEnabled(dozeEnabled);
         mEdgeLightColorModePref.setOnPreferenceChangeListener(this);
         mEdgeLightColorPref = (ColorPickerPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR);
+        mEdgeLightColorPref.setEnabled(dozeEnabled);
         mEdgeLightColorPref.setOnPreferenceChangeListener(this);
-        int edgeLightColorMode = Settings.System.getIntForUser(getActivity().getContentResolver(),
-                Settings.System.PULSE_AMBIENT_LIGHT_COLOR_MODE, 1, UserHandle.USER_CURRENT);
-        updateColorPrefs(edgeLightColorMode);
 
+        updateCategoryDependencies(dozeEnabled);
+        updateColorPrefs();
+
+        proximitySensorCategory.setEnabled(dozeEnabled);
         // Hide proximity sensor related features if the device doesn't support them
         if (!Utils.getProxCheckBeforePulse(getActivity())) {
             getPreferenceScreen().removePreference(proximitySensorCategory);
         }
     }
+    private void updateCategoryDependencies(boolean state) {
+        PreferenceCategory ambientLightCategory = (PreferenceCategory) getPreferenceScreen().
+                findPreference(Utils.CATEG_AMBIENT_LIGHT);
+        PreferenceCategory doubleTapCategory = (PreferenceCategory) getPreferenceScreen().
+                findPreference(Utils.CATEG_DOUBLE_TAP);
+        PreferenceCategory tiltSensorCategory = (PreferenceCategory) getPreferenceScreen().
+                findPreference(Utils.CATEG_TILT_SENSOR);
+        SwitchPreference ambientMusicTicker = (SwitchPreference) getPreferenceScreen().
+                findPreference(Utils.AMBIENT_MUSIC_TICKER);
+        ambientLightCategory.setEnabled(state);
+        doubleTapCategory.setEnabled(state);
+        tiltSensorCategory.setEnabled(state);
+        if (!state) ambientMusicTicker.setChecked(false);
+        ambientMusicTicker.setEnabled(state);
+     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -134,8 +152,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (mEdgeLightColorModePref.equals(preference)) {
-            int edgeLightColorMode = Integer.valueOf((String) newValue);
-            updateColorPrefs(edgeLightColorMode);
+            updateColorPrefs();
             return true;
         }
         Utils.checkDozeService(getActivity());
@@ -153,6 +170,8 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mPickUpPreference.setEnabled(isChecked);
         mHandwavePreference.setEnabled(isChecked);
         mPocketPreference.setEnabled(isChecked);
+        updateCategoryDependencies(isChecked);
+        if (isChecked) updateColorPrefs();
     }
 
     @Override
@@ -164,8 +183,10 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         return false;
     }
 
-    private void updateColorPrefs(int mode) {
-        mEdgeLightColorPref.setEnabled(mode == 2);
+    private void updateColorPrefs() {
+        int edgeLightColorMode = Settings.System.getIntForUser(getActivity().getContentResolver(),
+              Settings.System.PULSE_AMBIENT_LIGHT_COLOR_MODE, 1, UserHandle.USER_CURRENT);
+        mEdgeLightColorPref.setEnabled(edgeLightColorMode == 2);
     }
 
     public static class HelpDialogFragment extends DialogFragment {
