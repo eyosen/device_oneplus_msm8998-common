@@ -31,7 +31,11 @@ import static android.provider.Settings.Secure.DOZE_ENABLED;
 public final class Utils {
 
     protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
-    protected static final String CATEG_AMBIENT_LIGHT = "pulse_ambient_light";
+    protected static final String CATEG_AMBIENT_LIGHT = "ambient_light";
+    protected static final String CATEG_DOUBLE_TAP = "double_tap";
+    protected static final String CATEG_TILT_SENSOR = "tilt_sensor";
+
+    protected static final String AMBIENT_MUSIC_TICKER = "pulse_on_new_tracks";
 
     protected static final String GESTURE_PICK_UP_KEY = "doze_tilt_gesture";
     protected static final String GESTURE_HAND_WAVE_KEY = "doze_handwave_gesture";
