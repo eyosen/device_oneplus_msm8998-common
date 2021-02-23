@@ -2,5 +2,10 @@
   {
     "repository": "kernel_oneplus_msm8998",
     "target_path": "kernel/oneplus/msm8998"
+  },
+  {
+    "repository": "proprietary_vendor_oneplus",
+    "target_path": "vendor/oneplus",
+    "branch":      "r11.1-oneplus5"
   }
 ]
