@@ -8,6 +8,11 @@ persist.vendor.btsatck.absvolfeature=true
 persist.vendor.btstack.connect.peer_earbud=true
 ro.bluetooth.library_name=libbluetooth_qti.so
 
+
+# Enable blurs, hidden under dev option
+ro.surface_flinger.supports_background_blur=1
+persist.sys.sf.disable_blurs=1
+
 # CNE
 persist.vendor.cne.feature=1
 
