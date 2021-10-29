@@ -178,6 +178,9 @@ persist.media.treble_omx=true
 # NFC
 ro.hardware.nfc_nci=nqx.default
 
+# OEM Unlock reporting
+ro.oem_unlock_supported=1
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
