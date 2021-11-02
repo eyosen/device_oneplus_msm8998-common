@@ -205,11 +205,12 @@ PRODUCT_PACKAGES += \
     copybit.msm8998 \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
-    memtrack.msm8998 \
     libdisplayconfig \
     libdisplayconfig.qti \
     libqdMetaData.system \
     libqdMetaData.vendor \
+    libtinyxml \
+    memtrack.msm8998
 
 PRODUCT_PACKAGES += \
     vendor.display.config@2.0.vendor \
