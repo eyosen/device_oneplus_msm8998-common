@@ -201,6 +201,10 @@ on post-fs
     chmod 0440 /sys/fs/pstore/console-ramoops-0
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 
+    # Pocket_judge: kernel fpc and touchscreen irq controller for pocket_bridge
+    chown system system /sys/kernel/pocket_judge/inpocket
+    chmod 664 /sys/kernel/pocket_judge/inpocket
+
 on late-fs
     # Start devices by sysfs trigger
     start init-devstart-sh
