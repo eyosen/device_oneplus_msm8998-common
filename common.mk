@@ -31,9 +31,12 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-aosp
+    $(LOCAL_PATH)/overlay-aicp
 
 PRODUCT_ENFORCE_RRO_TARGETS += *
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-aicp/packages/apps/Snap \
+    $(LOCAL_PATH)/overlay-aicp/packages/apps/PartsBin
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -251,6 +254,7 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.aicp.rc \
     init.devstart.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
@@ -436,11 +440,11 @@ PRODUCT_PACKAGES += \
 
 # Tri-state-key
 PRODUCT_PACKAGES += \
-    KeyHandler
+    PartsBin
 
 # Trust HAL
 PRODUCT_PACKAGES += \
-    vendor..trust@1.0-service
+    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
