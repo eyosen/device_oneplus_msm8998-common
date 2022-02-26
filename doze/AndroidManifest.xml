@@ -26,12 +26,17 @@
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="29"/>
+
     <application
         android:label="@string/device_settings_app_name"
         android:persistent="true">
 
-        <receiver android:name=".BootCompletedReceiver"
-                  android:exported="false">
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,17 +44,17 @@
         </receiver>
 
         <service android:name=".DozeService"
-                 android:permission="OneplusDozeService"
-                 android:exported="true">
+            android:exported="false"
+            android:permission="DozeService">
         </service>
 
         <activity
             android:name=".DozeSettingsActivity"
-            android:exported="false"
             android:label="@string/ambient_display_title"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:exported="true"
+            android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="org.lineageos.settings.device.DOZE_SETTINGS" />
+                <action android:name="com.aicp.settings.device.DOZE_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

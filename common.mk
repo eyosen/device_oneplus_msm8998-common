@@ -348,7 +348,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    OnePlusDoze
+    Doze
 
 # Privapp Whitelist
 PRODUCT_COPY_FILES += \
